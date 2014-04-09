@@ -1,8 +1,8 @@
 <?php
 /**
-* Classe View
+* Classe Login qui étend la classe Controller
 *
-* Classe View
+* Classe Login qui étend la classe Controller
 *
 * LICENSE: Informations sur la licence
 *
@@ -13,13 +13,14 @@
 * @since      1.0
 */
 
-class View {
+class Login extends Controller {
 
 	function __construct() {
-		echo 'This is the view';
+		parent::__construct();
 	}
 
-	public function render($name) {
-		require 'views/' . $name . '.php';
+	function index() {
+		$this->view->render('login/index');
 	}
+
 }
