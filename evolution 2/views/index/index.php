@@ -1,3 +1,1 @@
-<?php require 'views/header.php'; ?>
-
-This is the error !
+This is the main page welcome!

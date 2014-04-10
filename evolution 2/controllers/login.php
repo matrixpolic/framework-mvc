@@ -1,8 +1,8 @@
 <?php
 /**
-* Classe Error qui étend la classe Controller
+* Classe Login qui étend la classe Controller
 *
-* Classe Error qui étend la classe Controller
+* Classe Login qui étend la classe Controller
 *
 * LICENSE: Informations sur la licence
 *
@@ -13,15 +13,14 @@
 * @since      1.0
 */
 
-class Error extends Controller {
-	
+class Login extends Controller {
+
 	function __construct() {
 		parent::__construct();
 	}
 
 	function index() {
-		$this->view->msg = 'This page doesnt exist';
-		$this->view->render('error/index');
+		$this->view->render('login/index');
 	}
 
 }
