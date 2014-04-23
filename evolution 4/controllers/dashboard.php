@@ -22,6 +22,8 @@ class Dashboard extends Controller {
 			header('location: ../login');
 			exit;
 		}
+
+		$this->view->js = array('dashboard/js/default.js');
 	}
 
 	function index() {
@@ -32,6 +34,19 @@ class Dashboard extends Controller {
 		Session::destroy();
 		header('location: ../login');
 		exit;
+	}
+
+	// xhr : Xml HTTP Request
+	function xhrInsert() {
+		$this->model->xhrInsert();
+	}
+
+	function xhrGetListings() {
+		$this->model->xhrGetListings();
+	}
+
+	function xhrDeleteListing() {
+		$this->model->xhrDeleteListing();
 	}
 
 }
