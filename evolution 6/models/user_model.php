@@ -21,30 +21,21 @@ class User_Model extends Model {
 	}
 
 	public function create($data) {
-		$sth = $this->db->prepare('INSERT INTO users 
-			(`login`, `password`, `role`) 
-			VALUES (:login, :password, :role)
-			');
-		
-		$sth->execute(array(
-			':login' => $data['login'],
-			':password' => $data['password'],
-			':role' => $data['role']
+		$this->db->insert('users', array(
+			'login' => $data['login'],
+			'password' => Hash::create('md5', $data['password'], HASH_PASSWORD_KEY),
+			'role' => $data['role']
 		));
 	}
 
 	public function editSave($data) {
-		$sth = $this->db->prepare('UPDATE users
-			SET `login` = :login, `password` = :password, `role` = :role
-			WHERE id = :id
-			');
+		$postData = array(
+			'login' => $data['login'],
+			'password' => Hash::create('md5', $data['password'], HASH_PASSWORD_KEY),
+			'role' => $data['role']
+		);
 		
-		$sth->execute(array(
-			':id' => $data['id'],
-			':login' => $data['login'],
-			':password' => md5($data['password']),
-			':role' => $data['role']
-		));
+		$this->db->update('users', $postData, "`id` = {$data['id']}");
 	}
 
 	public function delete($id) {
