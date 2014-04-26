@@ -2,7 +2,7 @@
 /**
 * Fichier qui sert d'unique porte d'entrée du framework
 *
-* Fichier qui sert d'unique porte d'entrée du framework. On charge les quelques classes principales et on instancie notre bottstrap.
+* Fichier qui sert d'unique porte d'entrée du framework. On charge les quelques classes principales et on instancie notre bootstrap.
 *
 * LICENSE: Informations sur la licence
 *
