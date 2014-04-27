@@ -1,5 +1,16 @@
 <?php
 
+// Always provide a TRAILING SLASH (/) AFTER A PATH
+define('URL', 'http://localhost:8888/');
+define('LIBS', 'libs/');
+
+// 
+define('DB_TYPE', 'mysql');
+define('DB_HOST', 'localhost');
+define('DB_NAME', 'mvc');
+define('DB_USER', 'root');
+define('DB_PASS', 'root');
+
 // The sitewide hashkey, do not change this because its used for passwords!
 // This is for other hash... Not sure yet
 define('HASH_GENERAL_KEY', 'Z~5}?@2d3~5SyaHTqABbvaP<Wck?cyrYU.fP]{BT');

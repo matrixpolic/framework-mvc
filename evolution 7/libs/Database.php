@@ -8,8 +8,27 @@ class Database extends PDO {
 		// parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTIONS);
 	}
 
-	/*
+	/**
+	 * select
+	 *
+	 * @param string $sql An SQL string
+	 * @param array $array Paramters to bind
+	 * @param constant $fetchMode A PDO Fetch mode
+	 * @return mixed
+	 */
+	public function select($sql, $array = array(), $fetchMode = PDO::FETCH_ASSOC) {
+		$sth = $this->prepare($sql);
+		foreach ($array as $key => $value) {
+			$sth->bindValue("$key", $value);
+		}
+		
+		$sth->execute();
+		return $sth->fetchAll($fetchMode);
+	}
+
+	/**
 	 * insert
+	 * 
 	 * @param string $table A name of table to insert into
 	 * @param string $data An associative array
 	 */
@@ -28,8 +47,9 @@ class Database extends PDO {
 		$sth->execute();
 	}
 
-	/*
+	/**
 	 * update
+	 *
 	 * @param string $table A name of table to insert into
 	 * @param string $data An associative array
 	 * @param string $where The WHERE query part
@@ -50,6 +70,18 @@ class Database extends PDO {
 		}
 		
 		$sth->execute();
+	}
+
+	/**
+	 * delete
+	 * 
+	 * @param string $table
+	 * @param string $where
+	 * @param integer $limit
+	 * @return integer Affected Rows
+	 */
+	public function delete($table, $where, $limit = 1) {
+		return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
 	}
 
 }

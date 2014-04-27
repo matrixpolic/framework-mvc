@@ -13,9 +13,7 @@
 * @since      1.0
 */
 
-require 'config/paths.php';
-require 'config/database.php';
-require 'config/constants.php';
+require 'config.php';
 
 // Also spl_autoloader_register (Take a look at it if you like)
 function __autoload($class) {
